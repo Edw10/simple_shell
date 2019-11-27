@@ -18,7 +18,7 @@ int main()
 
 	while (strtok(environ[i], "=:") && check2)
 	{
-		if (!strncmp(environ[i], "PATH", 4))
+		if (!_strncmp(environ[i], "PATH", 4))
 		{
 			paty = malloc(8);
 			if (!paty)
