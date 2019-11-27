@@ -1,0 +1,17 @@
+#ifndef SHELL
+#define SHELL
+
+/**
+ * struct arv - singly linked list
+ * @arg: argument
+ * @next: points to the next node
+ *
+ * Description: list the arguments to execute the commands
+ */
+typedef struct list_s
+{
+	char *arg;
+	struct list_s *next;
+} list_t;
+
+#endif
