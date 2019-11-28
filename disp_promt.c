@@ -13,7 +13,12 @@ int main()
 	{
 		c = 0;
 		write(1, "$ ", 2);
-		getline(&keywords, &buf, stdin);
+		errno = 0;
+		if ((getline(&keywords, &buf, stdin) == -1) && !errno)
+		{
+			write(1,"\n",1);
+			return (-1);
+		}
 		argv = malloc(8);
 		if (!argv)
 		{
