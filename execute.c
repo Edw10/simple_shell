@@ -2,12 +2,8 @@
 
 int execute(char **argv, char **paty, int c2, int check)
 {
-	char *path;
+	char *path = NULL;
 	int aux = 1, i;
-
-
-	(void)paty;
-
 
 	if (access(argv[0], F_OK) && check)
 	{
@@ -33,8 +29,8 @@ int execute(char **argv, char **paty, int c2, int check)
 					i = c2 + 10;
 				}
 			}
-			i++;
 			free(path);
+			i++;
 		}
 		if(!aux)
 			write(1, "command not found\n", 18);

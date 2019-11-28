@@ -1,15 +1,18 @@
 #include "shell.h"
 
-char **path(int *c2)
+char **path(int *c2, char **environ10)
 {
 	int i = 0, check2 = 1;
-	char **paty;
-	char *environ1;
+	char **paty=NULL;
+	char *environ1 = NULL, *aux;
 
 	while (check2)
 	{
+		free(environ1);
 		environ1 = _strdup(environ[i]);
-		if (!_strncmp(strtok(environ1, "=:"), "PATH", 4))
+		*environ10 = environ1;
+		aux = environ1;
+		if (!_strncmp(strtok(environ1,"=:"), "PATH", 4))
 		{
 			paty = malloc(8);
 			if (!paty)
@@ -31,10 +34,10 @@ char **path(int *c2)
 
 				paty[*c2] = strtok(NULL, "=:");
 			}
-		check2 = 0;
+			check2 = 0;
 		}
 		i++;
-		free(environ1);
 	}
+
 	return(paty);
 }

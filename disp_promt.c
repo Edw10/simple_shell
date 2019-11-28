@@ -2,14 +2,13 @@
 
 int main()
 {
-	char *keywords = NULL;
+	char *keywords = NULL, *aux = NULL;
 	size_t buf = 0;
 	int c2 = 0, c = 0;
 	int check = 1;
 	char **argv = NULL, **paty = NULL;
 
-	paty = path(&c2);
-
+       	paty = path(&c2, &aux);
 	while (check)
 	{
 		c = 0;
@@ -43,5 +42,6 @@ int main()
 	}
 	free(keywords);
 	free(paty);
+	free(aux);
 	return(0);
 }
