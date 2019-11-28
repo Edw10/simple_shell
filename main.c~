@@ -1,0 +1,13 @@
+#include "shell.h"
+#include <stdio.h>
+
+int main()
+{
+	char *hola;
+
+	hola = _str_concat("hola", "hola");
+	printf("%s\n", hola);
+	free(hola);
+	return (0);
+
+}

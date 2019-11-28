@@ -9,7 +9,7 @@
  * Return: a pointer to the string
  */
 
-char *str_concat(char *s1, char *s2)
+char *_str_concat(char *s1, char *s2)
 {
 	char *p;
 	int i = 0, j = 0, h = 0;
@@ -28,7 +28,7 @@ char *str_concat(char *s1, char *s2)
 			j++;
 		}
 
-		p = malloc(sizeof(char) * (i + j + 1));
+		p = malloc(sizeof(char) * (i + j + 2));
 
 		if (p)
 		{
@@ -37,6 +37,8 @@ char *str_concat(char *s1, char *s2)
 			{
 				p[h] = s1[h];
 			}
+			p[i] = '/';
+			i++;
 			for (h = 0; h <= j; h++)
 			{
 				p[i + h] = s2[h];
@@ -47,6 +49,7 @@ char *str_concat(char *s1, char *s2)
 		{
 			return ('\0');
 		}
+
 		return (p);
 
 }
