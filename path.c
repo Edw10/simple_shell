@@ -6,6 +6,7 @@ char **path(int *c2, char **environ10)
 	char **paty=NULL;
 	char *environ1 = NULL, *aux;
 
+	(void)aux;
 	while (check2)
 	{
 		free(environ1);
