@@ -16,8 +16,7 @@ int main()
 		c = 0;
 		write(1, "$ ", 2);
 		}
-		errno = 0;
-		if ((getline(&keywords, &buf, stdin) == -1) && !errno)
+		if ((getline(&keywords, &buf, stdin) == EOF))
 		{
 			if (isatty(STDIN_FILENO))
 				write(1,"\n",1);
@@ -35,7 +34,7 @@ int main()
 		while (argv[c])
 		{
 			c++;
-			argv = realloc(argv, 8 * (c + 1));
+			argv = _realloc(argv, 8 * (c), 8 * (c + 1));
 			if (!argv)
 		 	{
 		 		write(1, "error", 5);

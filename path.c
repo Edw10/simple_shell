@@ -26,7 +26,7 @@ char **path(int *c2, char **environ10)
 			while (paty[*c2])
 			{
 				*c2 = *c2 + 1;
-				paty = realloc(paty, 8 * (*c2 + 1));
+				paty = _realloc(paty, 8 * (*c2), 8 * (*c2 + 1));
 				if (!paty)
 				{
 				 	write(1, "error2", 6);

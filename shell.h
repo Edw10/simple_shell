@@ -28,5 +28,7 @@ char *_str_concat(char *s1, char *s2);
 char **path(int *c2, char **environ10);
 int execute(char **argv, char **paty, int c2, int check);
 char *_strdup(char *str);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
 
 #endif
