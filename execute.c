@@ -3,7 +3,7 @@
 int execute(char **argv, char **paty, int c2, int check, int conteo)
 {
 	char *path = NULL;
-	int aux = 1, is = 0, i;
+	int aux = 0, is = 0, i;
 
 	(void) conteo;
 	if (argv[0])
