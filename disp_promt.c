@@ -4,13 +4,14 @@ int main()
 {
 	char *keywords = NULL, *aux = NULL;
 	size_t buf = 0;
-	int c2 = 0, c = 0;
-	int check = 1;
+	int c2 = 0, c = 0, conteo = 0;
+	int check = 1, error = 0;
 	char **argv = NULL, **paty = NULL;
 
        	paty = path(&c2, &aux);
 	while (check)
 	{
+		conteo++;
 		if (isatty(STDIN_FILENO))
 		{
 		c = 0;
@@ -44,12 +45,12 @@ int main()
 
 		}
 
-		execute(argv, paty, c2, check);
+		error = execute(argv, paty, c2, check, conteo);
 
 		free(argv);
 	}
 	free(keywords);
 	free(paty);
 	free(aux);
-	return(0);
+	return(error);
 }

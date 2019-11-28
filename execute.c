@@ -1,11 +1,15 @@
 #include "shell.h"
 
-int execute(char **argv, char **paty, int c2, int check)
+int execute(char **argv, char **paty, int c2, int check, int conteo)
 {
 	char *path = NULL;
-	int aux = 1, i;
+	int aux = 1, is = 0, i;
+
+	(void) conteo;
 	if (argv[0])
 	{
+		while(argv[0][is])
+			is++;
 	if (access(argv[0], F_OK) && check)
 	{
 		i = 0;
@@ -14,7 +18,7 @@ int execute(char **argv, char **paty, int c2, int check)
 			path = _str_concat(paty[i], argv[0]);
 						if (access(path, F_OK) && check)
 			{
-				aux = 0;
+				aux = 127;
 			}
 			else
 			{
@@ -26,15 +30,21 @@ int execute(char **argv, char **paty, int c2, int check)
 				else
 				{
 					wait(NULL);
-					aux = 1;
+					aux = 0;
 					i = c2 + 10;
 				}
 			}
 			free(path);
 			i++;
 		}
-		if(!aux)
-			write(1, "command not found\n", 18);
+		if(aux)
+		{
+			write(2, "./hsh: ",7);
+			print_number(conteo);
+			write(2, ": ", 2);
+			write(2, argv[0], is);
+			write(2, ": not found\n", 12);
+		}
 	}
 	else
 	{
@@ -48,6 +58,6 @@ int execute(char **argv, char **paty, int c2, int check)
 		}
 	}
 	}
-	return(0);
+	return(aux);
 
 }
