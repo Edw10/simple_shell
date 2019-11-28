@@ -11,7 +11,7 @@ int main()
        	paty = path(&c2, &aux);
 	while (check)
 	{
-		if (isatty(0))
+		if (isatty(STDIN_FILENO))
 		{
 		c = 0;
 		write(1, "$ ", 2);
@@ -19,7 +19,7 @@ int main()
 		errno = 0;
 		if ((getline(&keywords, &buf, stdin) == -1) && !errno)
 		{
-			if (isatty(0))
+			if (isatty(STDIN_FILENO))
 				write(1,"\n",1);
 			break;
 		}

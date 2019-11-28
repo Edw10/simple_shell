@@ -270,7 +270,7 @@ then
 	then
 	$KILL -9 "$valgrind_pid" > /dev/null 2>&1
 	fi
-    
+
     content=`$CAT $VALGRIND_OUTPUTFILE`
     regex="==([0-9]+)== Parent PID: ([0-9]+)"
     if [[ $content =~ $regex ]]
