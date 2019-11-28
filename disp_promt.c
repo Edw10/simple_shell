@@ -2,17 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 #include "shell.h"
-#define TRUE 1 // variables to return error states //
-#define FAIL -1
 
 
 int main()
 {
 	char *keywords = NULL;
 	size_t buf = 0;
-	int c = 0, i = 0;
+	int c2 = 0, c = 0, i = 0;
 	int check = 1, check2 = 1;
 	char **argv = NULL, **paty = NULL;
 
@@ -23,20 +23,20 @@ int main()
 			paty = malloc(8);
 			if (!paty)
 			{
-				printf("error");
+				write(1, "error", 5);
 				return (-1);
 			}
-			paty[c] = strtok(NULL, "=:");
-			while (paty[c])
+			paty[c2] = strtok(NULL, "=:");
+			while (paty[c2])
 			{
 				c++;
-				paty = realloc(paty, 8 * (c + 1));
+				paty = realloc(paty, 8 * (c2 + 1));
 				if (!paty)
 				{
-				 	printf("error");
+				 	write(1, "error", 5);
 				 	return (-1);
 				}
-				paty[c] = strtok(NULL, "=:");
+				paty[c2] = strtok(NULL, "=:");
 			}
 		check2 = 0;
 		}
@@ -48,24 +48,24 @@ int main()
 	while (check)
 	{
 		c = 0;
-		printf("$ ");
+		write(1, "$ ", 2);
 		getline(&keywords, &buf, stdin);
 		argv = malloc(8);
 		if (!argv)
 		{
-			printf("error");
+			write(1, "error", 5);
 			return (-1);
 		}
 		argv[0] = strtok(keywords, " \f\n\r\t\v");
 		if(argv[0])
-			check = strcmp(argv[0], "exit");
+			check = _strcmp(argv[0], "exit");
 		while (argv[c])
 		{
 			c++;
 			argv = realloc(argv, 8 * (c + 1));
 			if (!argv)
 		 	{
-		 		printf("error");
+		 		write(1, "error", 5);
 		 		return (-1);
 		 	}
 		 	argv[c] = strtok(NULL, " \f\n\r\t\v");
@@ -76,7 +76,7 @@ int main()
 
 		if (access(argv[0], F_OK) && check)
 		{
-			printf("the command is not found\n");
+			write(1, "the command is not found\n", 25);
 		}
 		else
 		{
