@@ -4,14 +4,15 @@ int execute(char **argv, char **paty, int c2, int check)
 {
 	char *path = NULL;
 	int aux = 1, i;
-
+	if (argv[0])
+	{
 	if (access(argv[0], F_OK) && check)
 	{
 		i = 0;
 		while(i <= c2)
 		{
 			path = _str_concat(paty[i], argv[0]);
-			if (access(path, F_OK) && check)
+						if (access(path, F_OK) && check)
 			{
 				aux = 0;
 			}
@@ -46,5 +47,7 @@ int execute(char **argv, char **paty, int c2, int check)
 			wait(NULL);
 		}
 	}
+	}
 	return(0);
+
 }
