@@ -11,13 +11,17 @@ int main()
        	paty = path(&c2, &aux);
 	while (check)
 	{
+		if (isatty(0))
+		{
 		c = 0;
 		write(1, "$ ", 2);
+		}
 		errno = 0;
 		if ((getline(&keywords, &buf, stdin) == -1) && !errno)
 		{
-			write(1,"\n",1);
-			return (-1);
+			if (isatty(0))
+				write(1,"\n",1);
+			break;
 		}
 		argv = malloc(8);
 		if (!argv)
