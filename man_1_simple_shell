@@ -1,0 +1,21 @@
+.TH shell 1  SHELL SARC-EDWARD General commands
+
+.SH NAME
+shell - executes the user commands
+.SH SYNOPSIS
+command [-arg1] [-arg2] [...]
+.SH DESCRIPTION
+is a command interpreter for the system. This is a custom shell able to read the user commands and executes. It was based on linux shell.
+.SH OPTIONS
+There exists several flags compounding the command to enhance the function or behavior for an specific result.
+.SH BUGS
+Several prof cases are not tested so if there is any strugle please write to the authors.
+.SH AUTHOR
+Edward Osorno edward-1094@hotmail.com
+Samuel Rojas 1208@holbertonschool.com
+.SH SEE ALSO
+The functions working in this program are the same used in the DASH shell insted an "_" underline before of every command word.
+~
+~
+~
+~                                                                        ~                                                                        ~                                                                     
