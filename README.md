@@ -16,6 +16,14 @@ When the system identify the command name, the shell search for the file in the 
 Execute the Command:
 In order to execute the program the shell need to create another proccess to continue with the shell after that, to do this te shell uses the system calls fork, execve and wait in this way:
 
+How to Compile
+
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+
+Example
+
+ls -l
+
 *Create by [Edward Osorno](2), [Samuel Rojas Coley](3)*
 
 [1]: https://github.com/
