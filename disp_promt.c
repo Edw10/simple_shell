@@ -8,7 +8,7 @@ int main()
 	int check = 1, error = 0;
 	char **argv = NULL, **paty = NULL;
 
-       	paty = path(&c2, &aux);
+
 	while (check)
 	{
 		conteo++;
@@ -23,6 +23,7 @@ int main()
 				write(1,"\n",1);
 			break;
 		}
+
 		argv = malloc(8);
 		if (!argv)
 		{
@@ -45,12 +46,14 @@ int main()
 
 		}
 
+		paty = path(&c2, &aux);
 		error = execute(argv, paty, c2, check, conteo);
-
 		free(argv);
+		free(paty);
+		free(aux);
+
 	}
+
 	free(keywords);
-	free(paty);
-	free(aux);
 	return(error);
 }
