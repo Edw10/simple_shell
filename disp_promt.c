@@ -1,5 +1,14 @@
 #include "shell.h"
 
+
+void ctrlc(int i)
+{
+	i = i;
+	write(1, "\n$ ", 3);
+	fflush(stdout);
+}
+
+
 int main()
 {
 	char *keywords = NULL, *aux = NULL;
@@ -17,6 +26,7 @@ int main()
 		c = 0;
 		write(1, "$ ", 2);
 		}
+		signal(SIGINT, ctrlc);
 		if ((getline(&keywords, &buf, stdin) == EOF))
 		{
 			if (isatty(STDIN_FILENO))
